@@ -73,7 +73,7 @@ export default function Header() {
         {/* TOP BAR */}
         <div className="px-4 py-3 flex items-center justify-between">
           {/* LOGO */}
-          <Link href={isAdmin ? "/admin" : "/"} className="flex items-center gap-2">
+          <Link href={isAdmin ? "/" : "/"} className="flex items-center gap-2">
             <Image
               src="/image/tradin-go-logo.png"
               alt="Agrotech Logo"
