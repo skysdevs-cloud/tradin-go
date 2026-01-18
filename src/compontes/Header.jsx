@@ -107,7 +107,7 @@ export default function Header() {
             {isAdmin && (
               <button
                 onClick={handleLogout}
-                className="flex items-center gap-1 rounded-xl bg-red-500 px-4 py-2 text-white text-sm font-semibold hover:bg-red-400 transition"
+                className="flex items-center gap-1 rounded-xl bg-red-500 px-4 py-2 text-white text-sm font-semibold hover:bg-red-400 transition cursor-pointer"
               >
                 <LogOut size={16} />
                 Logout

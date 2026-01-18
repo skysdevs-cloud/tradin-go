@@ -183,7 +183,7 @@ const selectClass = (field) =>
               <button
                 type="submit"
                 disabled={loading}
-                className={`mt-2 inline-flex w-fit items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-black transition border
+                className={`mt-2 inline-flex w-fit items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-black transition border cursor-pointer
                   ${
                     loading
                       ? "bg-gray-300 border-gray-400 cursor-not-allowed"
