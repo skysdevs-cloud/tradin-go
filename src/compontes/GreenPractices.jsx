@@ -73,6 +73,7 @@ export default function GreenPractices() {
                     </div>
                   </div>
                 </div>
+                
 
                 <h3 className="text-lg font-semibold">{item.title}</h3>
                 <p className="mt-2 text-sm text-gray-200">{item.desc}</p>
