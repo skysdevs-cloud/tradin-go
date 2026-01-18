@@ -28,12 +28,13 @@ export default function AdminLayout({ children }) {
       }
 
       // ❌ Logged in but not admin
-      if (user.uid !== process.env.ADMIN_UID) {
-        await signOut(auth);
-        toast.error("You are not admin");
-        router.replace("/");
-        return;
-      }
+    if (user.uid !== process.env.NEXT_PUBLIC_ADMIN_UID) {
+  await signOut(auth);
+  toast.error("You are not admin");
+  router.replace("/");
+  return;
+}
+
 
       // ✅ Admin verified
       setChecking(false);
