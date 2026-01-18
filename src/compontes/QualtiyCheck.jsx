@@ -155,7 +155,7 @@ export default function QualtiyCheck() {
           <SpotlightButton
             bgColor="bg-[#ecf96e]"
             text="Chat With Us"
-            href="/services"
+            href="/contact"
             icon={tabs[activeTab].buttonIcon}
           />
         </div>

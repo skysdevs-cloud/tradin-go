@@ -17,6 +17,7 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [checking, setChecking] = useState(true);
+
   const pathname = usePathname();
   const router = useRouter();
 
@@ -24,10 +25,8 @@ export default function Header() {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user && user.uid === ADMIN_UID) setIsAdmin(true);
       else setIsAdmin(false);
-
       setChecking(false);
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -44,8 +43,7 @@ export default function Header() {
       await signOut(auth);
       toast.success("Logged out successfully");
       router.push("/");
-    } catch (err) {
-      console.error(err);
+    } catch {
       toast.error("Logout failed");
     }
   };
@@ -53,7 +51,7 @@ export default function Header() {
   const linkClass = (path) =>
     pathname === path
       ? "text-lime-600 font-semibold"
-      : "transition-colors duration-300 hover:text-lime-600";
+      : "transition hover:text-lime-600";
 
   const links = isAdmin
     ? [
@@ -71,21 +69,22 @@ export default function Header() {
 
   return (
     <Container>
-      <header className="w-full">
-        <div className="max-[1540px] mx-auto px-4 py-3 flex items-center justify-between">
-          {/* Logo */}
+      <header className="relative w-full">
+        {/* TOP BAR */}
+        <div className="px-4 py-3 flex items-center justify-between">
+          {/* LOGO */}
           <Link href={isAdmin ? "/admin" : "/"} className="flex items-center gap-2">
             <Image
               src="/image/tradin-go-logo.png"
               alt="Agrotech Logo"
-              width={200}
-              height={100}
+              width={180}
+              height={90}
               priority
               className="object-contain"
             />
           </Link>
 
-          {/* Desktop Menu */}
+          {/* DESKTOP MENU */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-medium text-[#3f492a]">
             {links.map((link) => (
               <Link key={link.path} href={link.path} className={linkClass(link.path)}>
@@ -94,7 +93,7 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Right Desktop */}
+          {/* DESKTOP RIGHT */}
           <div className="hidden lg:flex items-center gap-4">
             {!isAdmin && (
               <SpotlightButton
@@ -116,20 +115,39 @@ export default function Header() {
             )}
           </div>
 
-          {/* Mobile Button */}
-          <button className="lg:hidden" onClick={() => setOpen(!open)}>
-            {open ? <X /> : <Menu />}
+          {/* MOBILE TOGGLE */}
+          <button
+            className="lg:hidden z-50"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        {open && (
-          <div className="lg:hidden bg-[#3f492a] px-4 py-4 flex flex-col gap-4 text-white">
+        {/* 🍋 MOBILE MENU – LEMON GLASS */}
+        <div
+          className={`
+            lg:hidden fixed top-0 left-0 w-full z-40
+            transition-all duration-500 ease-out
+            ${open ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"}
+          `}
+        >
+          <div
+            className="
+              mx-4 mt-20 rounded-3xl
+              bg-lime-200/60 backdrop-blur-xl
+              border border-lime-300/40
+              shadow-[0_20px_60px_-15px_rgba(163,230,53,0.6)]
+              px-6 py-6
+              flex flex-col gap-5
+              text-[#3f492a]
+            "
+          >
             {links.map((link) => (
               <Link
                 key={link.path}
                 href={link.path}
-                className={linkClass(link.path)}
+                className="font-medium hover:text-lime-700 transition"
                 onClick={() => setOpen(false)}
               >
                 {link.name}
@@ -146,7 +164,7 @@ export default function Header() {
               </button>
             )}
           </div>
-        )}
+        </div>
       </header>
     </Container>
   );

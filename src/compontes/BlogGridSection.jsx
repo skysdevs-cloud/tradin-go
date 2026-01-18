@@ -2,6 +2,8 @@
 
 import { Leaf } from "lucide-react";
 import SpotlightButton from "./SpotlightButton";
+import Link from "next/link";
+
 
 const blogs = [
   {
@@ -29,7 +31,7 @@ const blogs = [
 
 export default function BlogGridSection() {
   return (
-    <section className="max-w-[1530px] mx-auto px-4 py-16">
+    <section className="max-w-382.5 mx-auto px-4 py-16">
       
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-6">
@@ -46,7 +48,7 @@ export default function BlogGridSection() {
           <SpotlightButton
             bgColor="bg-[#ecf96e]"
             text={`View all blog`}
-            href="/services"
+            href="/blog"
             icon={Leaf}
           />
         </button>
@@ -62,7 +64,7 @@ export default function BlogGridSection() {
               <img
                 src={blog.image}
                 alt={blog.title}
-                className="w-full h-[260px] object-cover group-hover:scale-105 transition duration-500"
+                className="w-full h-65 object-cover group-hover:scale-105 transition duration-500"
               />
 
               {/* Date Badge */}
@@ -81,13 +83,13 @@ export default function BlogGridSection() {
                 {blog.desc}
               </p>
 
-              <a
-                href="#"
+              <Link
+                href="/blog"
                 className="inline-flex items-center gap-2 text-sm font-medium text-[#3f4d2a] hover:gap-3 transition-all"
               >
-                Continue Blog
+                Continue Blogs
                 <span>🌿</span>
-              </a>
+              </Link>
             </div>
 
           </div>

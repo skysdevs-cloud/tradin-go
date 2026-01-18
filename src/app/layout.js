@@ -21,10 +21,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "SkyHub Recipes | Trending & Popular Recipes",
+  title: "Tradin-Go Agro Impex | Global Trade of Quality Agricultural Products",
   description:
-    "Explore trending recipes, detailed cooking steps, and ingredient lists at SkyHub.",
+    "Tradin-Go Agro Impex is a leading agriculture trading company in India, supplying premium grains, spices & agro commodities like groundnut, maize, castor, sesame & more worldwide.",
+  icons: {
+    icon: "/tradin-go-logo.png",
+    shortcut: "/tradin-go-logo.png",
+    apple: "/tradin-go-logo.png",
+  },
 };
+
+
 
 export default function RootLayout({ children }) {
   return (

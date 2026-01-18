@@ -33,7 +33,7 @@ const steps = [
 const AgricultureProcess = () => {
   return (
     <section className=" py-16">
-      <div className="max-w-[1540px] mx-auto text-center">
+      <div className="max-w-385 mx-auto text-center">
         <p className="text-sm text-green-700 uppercase mb-2 flex justify-center items-center gap-2">
           <span>🌿</span> Precision Farming
         </p>
@@ -51,7 +51,7 @@ const AgricultureProcess = () => {
 
               {/* Connect line for md+ screens */}
               {index !== steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 right-[-50%] w-[100%] h-[2px] bg-gray-300"></div>
+                <div className="hidden md:block absolute top-8 right-[-50%] w-full h-0.5 bg-gray-300"></div>
               )}
 
               {/* Title */}
@@ -77,7 +77,7 @@ const AgricultureProcess = () => {
    <SpotlightButton
             bgColor="bg-[#ecf96e]"
             text={`Explore More`}
-            href="/services"
+            href="/products"
             // icon={Leaf}
           />        </button>
       </div>

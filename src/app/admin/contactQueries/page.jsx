@@ -91,14 +91,14 @@ export default function ContactQueriesPage() {
         <div className="mb-4 flex gap-2">
           <button
             onClick={downloadCSV}
-            className="rounded bg-lime-400 px-4 py-2 text-black font-semibold hover:bg-lime-300 transition"
+            className="rounded bg-lime-400 px-4 py-2 text-black font-semibold hover:bg-lime-300 transition cursor-pointer"
           >
             Download CSV
           </button>
 
           <button
             onClick={handleDeleteAll}
-            className="rounded bg-red-500 px-4 py-2 text-white font-semibold hover:bg-red-400 transition"
+            className="rounded bg-[#ecf96e] px-4 py-2 text-black font-semibold hover:bg-red-400 transition cursor-pointer"
           >
             Delete All
           </button>
