@@ -6,7 +6,6 @@ import { auth } from "@/lib/firebase";
 import { useRouter, usePathname } from "next/navigation";
 import { toast } from "react-toastify";
 
-const ADMIN_UID = "VXSp8udtLWP8PRd1xe0LWfEQLYT2";
 
 export default function AdminLayout({ children }) {
   const router = useRouter();
@@ -29,7 +28,7 @@ export default function AdminLayout({ children }) {
       }
 
       // ❌ Logged in but not admin
-      if (user.uid !== ADMIN_UID) {
+      if (user.uid !== process.env.ADMIN_UID) {
         await signOut(auth);
         toast.error("You are not admin");
         router.replace("/");
