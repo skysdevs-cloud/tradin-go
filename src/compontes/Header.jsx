@@ -57,9 +57,8 @@ export default function Header() {
 
   const links = isAdmin
     ? [
-        { name: "Home", path: "/admin" },
+        { name: "Home", path: "/" },
         { name: "Queries", path: "/admin/contactQueries" },
-        { name: "Blogs", path: "/admin/blogs" },
       ]
     : [
         { name: "Home", path: "/" },

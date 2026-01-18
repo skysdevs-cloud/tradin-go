@@ -44,11 +44,11 @@ export default function QualtiyCheck() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="max-w-[1530px] mx-auto  py-16 px-6 ">
+    <section className="max-w-382.5 mx-auto  py-16 px-6 ">
       <div className="mx-auto grid lg:grid-cols-2 gap-12 items-center">
 
       {/* LEFT BIG IMAGE (Fixed Height) */}
-<div className="rounded-lg overflow-hidden shadow-lg h-[420px] lg:h-[520px]">
+<div className="rounded-lg overflow-hidden shadow-lg h-105 lg:h-130">
   <img
     src={tabs[activeTab].leftImage}
     alt={tabs[activeTab].title}
