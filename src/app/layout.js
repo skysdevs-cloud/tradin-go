@@ -6,6 +6,9 @@ import Footer from "@/compontes/Footer";
 import FAQSection from "@/compontes/FAQSection";
 import BlogGridSection from "@/compontes/BlogGridSection";
 import ScrollToTop from "@/compontes/ScrollToTop";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +36,7 @@ export default function RootLayout({ children }) {
         <FAQSection/>
         <Footer />
         <ScrollToTop />
+        <ToastContainer />
       </body>
     </html>
   );

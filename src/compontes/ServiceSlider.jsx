@@ -3,108 +3,93 @@
 import { useState, useEffect } from "react";
 import SpotlightButton from "./SpotlightButton";
 import { Leaf } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-const services = [
-  {
-    title: "Green Farming",
-    description:
-      "Green Farming supports eco-friendly methods that protect resources and ensure sustainability.",
-    image: "/image/service01.jpg",
-  },
-  {
-    title: "Drone Spraying",
-    description:
-      "Drone Spraying applies crop treatments quickly and accurately using aerial technology.",
-    image: "/image/service02.jpg",
-  },
-  {
-    title: "Wheat Farming",
-    description:
-      "It involves soil preparation, timely sowing, and precise irrigation for optimal growth.",
-    image: "/image/service03.jpg",
-  },
-  {
-    title: "Organic Seeds",
-    description:
-      "High-quality organic seeds for sustainable farming and higher yields.",
-    image: "/image/service01.jpg",
-  },
-  {
-    title: "Smart Irrigation",
-    description:
-      "Automated irrigation solutions to save water and improve crop efficiency.",
-    image: "/image/service02.jpg",
-  },
-];
+// Product list with slug
+const products = [
+  { title: "Groundnut", description: "High-quality groundnuts for oil and snacks.", image: "/image/prod1.jpeg" },
+  { title: "Maize", description: "Premium maize for human consumption and feed.", image: "/image/prod2.jpeg" },
+  { title: "Castor Seeds", description: "Castor seeds for oil extraction and industrial use.", image: "/image/prod3.jpeg" },
+  { title: "Guar Seeds", description: "Top-grade guar seeds for gum and food industry.", image: "/image/prod4.jpeg" },
+  { title: "Wheat", description: "Organic wheat for flour and cereals.", image: "/image/prod5.jpeg" },
+  { title: "Moong Whole", description: "Whole moong beans, ideal for dals and sprouts.", image: "/image/prod6.jpeg" },
+  { title: "Fennel", description: "Aromatic fennel seeds for culinary and medicinal use.", image: "/image/prod7.jpeg" },
+  { title: "Cummins", description: "Quality cumin seeds for flavor and spice.", image: "/image/prod5.jpeg" },
+  { title: "Sesame Seeds", description: "Rich sesame seeds for oil and cooking.", image: "/image/prod2.jpeg" },
+  { title: "Psyllium (Isabgol)", description: "Pure psyllium husk for health and fiber.", image: "/image/prod3.jpeg" },
+  { title: "Pearl Millet (Bajra)", description: "Nutritious bajra for cereals and flour.", image: "/image/prod2.jpeg" },
+  { title: "Mustard", description: "Premium mustard seeds for oil and spice.", image: "/image/prod6.jpeg" },
+].map(p => ({ ...p, slug: p.title.toLowerCase().replace(/\s+/g, "-") }));
 
-export default function ServiceSlider() {
+export default function ProductSlider() {
+  const router = useRouter();
   const [startIndex, setStartIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
-  // Detect mobile width
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Auto slide every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      setStartIndex((prev) =>
-        prev + 1 >= services.length ? 0 : prev + 1
-      );
+      setStartIndex((prev) => (prev + 1 >= products.length ? 0 : prev + 1));
     }, 3000);
-
     return () => clearInterval(interval);
   }, []);
 
-  // Calculate visible slides
   let visibleSlides;
   if (isMobile) {
-    visibleSlides = [services[startIndex]]; // only 1 slide
+    visibleSlides = [products[startIndex]];
   } else {
-    visibleSlides = services.slice(startIndex, startIndex + 3);
+    visibleSlides = products.slice(startIndex, startIndex + 3);
     if (visibleSlides.length < 3) {
-      visibleSlides.push(...services.slice(0, 3 - visibleSlides.length));
+      visibleSlides.push(...products.slice(0, 3 - visibleSlides.length));
     }
   }
 
-  // Middle slide active only on desktop
   const activeSlide = isMobile ? visibleSlides[0] : visibleSlides[1];
 
   return (
-    <section className="max-w-[1530px] mx-auto py-16 px-6">
+    <section className="max-w-382.5 mx-auto py-16 px-6">
       <div className="bg-[#213e13] text-white py-16 px-6 rounded-xl relative">
         {/* Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 max-w-4xl mx-auto">
           <p className="text-sm uppercase tracking-wider mb-2 flex justify-center items-center gap-2">
-            <span>🌿</span> Our Service
+            <span>🌾</span> Our Products
           </p>
-          <h2 className="text-3xl font-bold">Sustainable Growth For Farms</h2>
+          <h2 className="text-3xl font-bold mb-4">Premium Agro Products</h2>
+          <p className="text-gray-200 text-sm">
+            India is one of the world's largest food grains and spices producers. Tradin-Go Agro Impex provides superior quality bulk products to buyers worldwide.
+          </p>
         </div>
 
         {/* Slider */}
-        <div className="flex justify-center items-center gap-6 w-full overflow-visible">
-          {visibleSlides.map((service, index) => {
-            const isActive = isMobile ? true : index === 1; // only middle active on desktop
+        <div className="flex justify-center items-center gap-6 w-full overflow-visible mt-12">
+          {visibleSlides.map((product, index) => {
+            const isActive = isMobile ? true : index === 1;
+
             return (
               <div
-                key={service.title}
+                key={product.slug}
                 className={`
-                  flex-shrink-0 w-64 sm:w-72 md:w-80 p-4 bg-white text-black rounded-xl
-                  transform transition-transform duration-500
+                  shrink-0 w-64 sm:w-72 md:w-80 p-4 bg-white text-black rounded-xl
+                  transform transition-all duration-500 cursor-pointer
                   ${isActive ? "scale-110 shadow-2xl z-10" : "scale-95 opacity-70 z-0"}
                 `}
+                onClick={() => router.push(`/products/${product.slug}`)}
               >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="rounded-lg mb-4 w-full h-40 object-cover"
-                />
-                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
-                <p className="text-sm mb-3">{service.description}</p>
+                <div className="overflow-hidden rounded-lg">
+                  <img
+                    src={product.image}
+                    alt={product.title}
+                    className="w-full h-40 object-cover rounded-lg transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+                <h3 className="font-semibold text-lg mt-3 mb-1">{product.title}</h3>
+                <p className="text-sm text-gray-700">{product.description}</p>
               </div>
             );
           })}
@@ -115,7 +100,7 @@ export default function ServiceSlider() {
           <SpotlightButton
             bgColor="bg-white"
             text={`Explore ${activeSlide.title}`}
-            href="/services"
+            href={`/products/${activeSlide.slug}`}
             icon={Leaf}
           />
         </div>

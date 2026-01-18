@@ -4,30 +4,30 @@ const contactItems = [
   {
     icon: <Mail size={22} />,
     title: "Mail Us 24/7",
-    subtitle: "contact@example.com",
+    subtitle: "support@yourcompany.in",
     description:
-      "We’re always here to answer your questions. Reach us anytime via email.",
+      "Have any questions or need support? Email us anytime and our team will get back to you quickly.",
   },
   {
     icon: <MapPin size={22} />,
     title: "Our Location",
-    subtitle: "No:58 A, Madison Street, USA",
+    subtitle: "Malviya Nagar, Jaipur, Rajasthan 302017",
     description:
-      "Find us in the heart of the city, easy to access from all main routes.",
+      "Visit our office in Malviya Nagar, Jaipur — a well-connected and easily accessible area.",
   },
   {
     icon: <Phone size={22} />,
     title: "Call Us 24/7",
-    subtitle: "+000-123-456-789",
+    subtitle: "+91 98765 43210",
     description:
-      "Our support team is available day and night to assist you by phone.",
+      "Our customer support team is available 24/7 to assist you with any queries or concerns.",
   },
   {
     icon: <Calendar size={22} />,
-    title: "Working Days",
-    subtitle: "Mon to Fri – 8am - 9pm",
+    title: "Working Hours",
+    subtitle: "Monday to Saturday – 9:00 AM to 7:00 PM",
     description:
-      "We’re open Monday to Friday, 8am to 9pm. Closed on weekends.",
+      "We are open from Monday to Saturday. Feel free to visit or contact us during working hours.",
   },
 ];
 

@@ -3,6 +3,11 @@ import { blogs } from "../data/blogs";
 import { notFound } from "next/navigation";
 import PageHeading from "@/compontes/PageHeading";
 
+
+export async function generateStaticParams() {
+  // return all blog slugs
+  return blogs.map((b) => ({ slug: b.slug }));
+}
 export default async function BlogReadPage({ params }) {
   const { slug } = await params; // ✅ correct
 

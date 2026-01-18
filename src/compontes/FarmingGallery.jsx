@@ -38,7 +38,7 @@ export default function FarmingGallery() {
               <SpotlightButton
                 bgColor="bg-white"
                 text="Have A Gallary"
-                href="/services"
+                href="/gallery"
               />
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function FarmingGallery() {
               <SpotlightButton
                 bgColor="bg-white"
                 text="Have A Gallary"
-                href="/services"
+                href="/gallery"
               />
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function FarmingGallery() {
               <SpotlightButton
                 bgColor="bg-white"
                 text="Have A Gallary"
-                href="/services"
+                href="/gallery"
               />
             </div>
           </div>
@@ -107,7 +107,7 @@ export default function FarmingGallery() {
               <SpotlightButton
                 bgColor="bg-white"
                 text="Have A Gallary"
-                href="/services"
+                href="/gallery"
               />
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function FarmingGallery() {
               <SpotlightButton
                 bgColor="bg-white"
                 text="Have A Gallary"
-                href="/services"
+                href="/gallery"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ export default function FarmingGallery() {
               <SpotlightButton
                 bgColor="bg-white"
                 text="Have A Gallary"
-                href="/services"
+                href="/gallery"
               />
             </div>
           </div>
